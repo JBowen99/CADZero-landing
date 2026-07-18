@@ -1,0 +1,24 @@
+---
+import { FEATURES } from '../data/features';
+import Reval from './ui/Reveal.astro';
+import FeatureCard from './FeatureCard.astro';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section id="features" class={`relative py-24 scroll-mt-20 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reval class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Built for the way you design</h2>
+      <p class="mt-4 text-muted max-w-lg mx-auto">
+        Everything you need to go from idea to manufacturing-ready file — all in conversation.
+      </p>
+    </Reval>
+
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-6">
+      {FEATURES.map((feature, i) => (
+        <FeatureCard feature={feature} index={i} />
+      ))}
+    </div>
+  </div>
+</section>

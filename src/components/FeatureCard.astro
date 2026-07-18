@@ -1,0 +1,51 @@
+---
+import type { Feature } from '../data/features';
+import MessageSquare from '@lucide/astro/icons/message-square';
+import Boxes from '@lucide/astro/icons/boxes';
+import Orbit from '@lucide/astro/icons/orbit';
+import Code from '@lucide/astro/icons/code';
+import History from '@lucide/astro/icons/history';
+import Sparkles from '@lucide/astro/icons/sparkles';
+import MousePointerClick from '@lucide/astro/icons/mouse-pointer-click';
+import Image from '@lucide/astro/icons/image';
+import Download from '@lucide/astro/icons/download';
+import FileBox from '@lucide/astro/icons/file-box';
+export interface Props {
+  feature: Feature;
+  index: number;
+}
+
+const { feature, index } = Astro.props;
+
+const icons: Record<string, any> = {
+  MessageSquare,
+  Boxes,
+  Orbit,
+  Code,
+  History,
+  Sparkles,
+  MousePointerClick,
+  Image,
+  Download,
+  FileBox,
+};
+
+const wideCards = [0, 3];
+const gridSpan = wideCards.includes(index) ? 'md:col-span-3 lg:col-span-4' : 'md:col-span-2';
+
+const IconComponent = icons[feature.icon];
+---
+
+<div
+  class={`group relative rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 md:p-8 transition-all duration-300 hover:border-brand/50 hover:shadow-[0_0_30px_-5px_rgba(250,204,21,0.3)] ${gridSpan}`}
+  data-reveal
+  style={`transition-delay: ${index * 100}ms`}
+>
+  {IconComponent && (
+    <div class="mb-4 w-10 h-10 rounded-lg bg-brand/10 flex items-center justify-center text-brand">
+      <IconComponent class="w-5 h-5" />
+    </div>
+  )}
+  <h3 class="text-lg font-semibold tracking-tight">{feature.title}</h3>
+  <p class="mt-2 text-sm text-muted leading-relaxed">{feature.description}</p>
+</div>

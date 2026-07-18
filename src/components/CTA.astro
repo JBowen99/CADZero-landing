@@ -1,0 +1,43 @@
+---
+import { SITE } from '../data/site';
+import Button from './ui/Button.astro';
+import Reveal from './ui/Reveal.astro';
+import Download from '@lucide/astro/icons/download';
+import Star from '@lucide/astro/icons/star';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section id="download" class={`relative py-28 overflow-hidden scroll-mt-20 ${className}`}>
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/10 blur-[120px] rounded-full" />
+    <div class="absolute inset-0 dot-grid opacity-50" />
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <Reveal>
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">
+        Ready to design by describing?
+      </h2>
+    </Reveal>
+
+    <Reveal :delay={100}>
+      <p class="mt-4 text-lg text-muted max-w-md mx-auto">
+        Stop clicking through menus. Start talking to your CAD.
+      </p>
+    </Reveal>
+
+    <Reveal :delay={200}>
+      <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+        <Button href={SITE.download} size="lg" class="w-full sm:w-auto justify-center">
+          <Download class="w-4 h-4" />
+          Download for Linux &darr;
+        </Button>
+        <Button href={SITE.github} variant="secondary" size="lg" class="w-full sm:w-auto justify-center">
+          <Star class="w-4 h-4" />
+          Star on GitHub &star;
+        </Button>
+      </div>
+    </Reveal>
+  </div>
+</section>

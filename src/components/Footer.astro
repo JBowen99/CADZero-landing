@@ -1,0 +1,50 @@
+---
+import { SITE } from '../data/site';
+
+const { class: className = '' } = Astro.props;
+---
+
+<footer class={`relative border-t border-white/10 py-12 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <a href="/" class="text-lg font-bold tracking-tight no-underline">
+          <span class="text-foreground">CAD</span><span class="text-brand [text-shadow:0_0_20px_rgba(250,204,21,0.4)]">Zero</span>
+        </a>
+        <p class="mt-2 text-sm text-muted max-w-xs">
+          An AI-native parametric CAD application. Open-source. Linux desktop (Electron).
+        </p>
+      </div>
+
+      <div class="text-sm text-muted">
+        <span> </span>
+        <p class="leading-relaxed">
+          Built with React, Three.js,<br />
+          and a love for making things.
+        </p>
+      </div>
+
+      <div class="flex flex-col items-start md:items-end gap-3">
+        <a
+          href={SITE.github}
+          class="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors no-underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+          </svg>
+          GitHub &nearr;
+        </a>
+      </div>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted/40">
+      <p>&copy; 2026 CADZero</p>
+      <div class="flex gap-6">
+        <a href={SITE.github + '/issues'} class="hover:text-foreground transition-colors no-underline">Issues</a>
+        <a href={SITE.github} class="hover:text-foreground transition-colors no-underline">License (MIT)</a>
+      </div>
+    </div>
+  </div>
+</footer>

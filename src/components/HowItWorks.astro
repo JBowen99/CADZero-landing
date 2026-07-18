@@ -1,0 +1,40 @@
+---
+import { STEPS } from '../data/steps';
+import Reval from './ui/Reveal.astro';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section id="how-it-works" class={`relative py-24 scroll-mt-20 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reval class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">How It Works</h2>
+      <p class="mt-4 text-muted max-w-md mx-auto">
+        From plain English to real 3D geometry in three steps.
+      </p>
+    </Reval>
+
+    <div class="grid md:grid-cols-3 gap-8 md:gap-12 items-start">
+      {STEPS.map((step, i) => (
+        <Reval :delay={i * 150} class="relative">
+          <div class="flex flex-col items-center text-center">
+            <span class="font-mono text-5xl md:text-6xl font-bold text-white/5 select-none leading-none">
+              {step.number}
+            </span>
+            <h3 class="mt-4 text-xl font-semibold tracking-tight">{step.title}</h3>
+            <p class="mt-2 text-muted text-sm leading-relaxed max-w-xs">
+              {step.description}
+            </p>
+          </div>
+          {i < STEPS.length - 1 && (
+            <div class="hidden md:block absolute top-8 -right-6 text-muted/20">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+              </svg>
+            </div>
+          )}
+        </Reval>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import { TECH_STACK } from '../data/site';
+import Reveal from './ui/Reveal.astro';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section class={`relative py-16 border-y border-white/5 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reveal>
+      <p class="text-xs font-mono text-muted/50 text-center mb-6 tracking-widest uppercase">
+        Powered by
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-mono text-muted/60">
+        {TECH_STACK.map((tech, i) => (
+          <span class="flex items-center gap-2">
+            <span>{tech}</span>
+            {i < TECH_STACK.length - 1 && <span class="text-muted/20 hidden sm:inline">&bull;</span>}
+          </span>
+        ))}
+      </div>
+    </Reveal>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+export interface Props {
+  class?: string;
+  glow?: boolean;
+  tilt?: boolean;
+  aspect?: string;
+}
+
+const { class: className = '', glow = false, tilt = false, aspect = '' } = Astro.props;
+---
+
+<div
+  class={`relative rounded-xl overflow-hidden border border-white/10 bg-surface ${tilt ? 'transform perspective-[1200px] rotateX(2deg) rotateY(-1deg)' : ''} ${aspect} ${className}`}
+>
+  {glow && (
+    <div class="absolute -inset-4 -z-10 bg-brand/20 blur-[80px] rounded-full animate-glow-pulse" />
+  )}
+  <slot />
+</div>

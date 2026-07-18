@@ -1,0 +1,43 @@
+---
+import MockupFrame from './MockupFrame.astro';
+---
+
+<MockupFrame glow class="w-full">
+  <div class="flex flex-col h-full">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-white/10">
+      <span class="text-xs font-mono text-muted">Chat · Plan</span>
+      <div class="flex gap-1">
+        <span class="w-2 h-2 rounded-full bg-white/20" />
+        <span class="w-2 h-2 rounded-full bg-white/20" />
+        <span class="w-2 h-2 rounded-full bg-white/20" />
+      </div>
+    </div>
+    <div class="flex-1 p-4 space-y-4">
+      <div class="flex justify-end">
+        <div class="max-w-[80%] rounded-2xl rounded-br-sm bg-brand/20 px-4 py-2 text-sm text-foreground">
+          a bracket with four 5mm mounting holes
+        </div>
+      </div>
+      <div class="flex justify-start">
+        <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-white/5 px-4 py-2 text-sm text-muted">
+          <span class="text-brand font-mono text-xs">▌plan</span>
+          <p class="mt-1">I'll create a rectangular bracket with four 5mm holes at each corner...</p>
+        </div>
+      </div>
+      <div class="flex justify-start">
+        <div class="max-w-[85%] rounded-2xl rounded-bl-sm bg-white/5 px-4 py-2 text-sm text-muted">
+          <span class="text-brand font-mono text-xs">▌build</span>
+          <p class="mt-1 text-foreground/80">Generating OpenSCAD geometry...</p>
+          <div class="mt-2 h-1 w-full bg-white/10 rounded overflow-hidden">
+            <div class="h-full w-3/4 bg-brand rounded animate-shimmer" style="background: linear-gradient(90deg, transparent, rgba(250,204,21,0.5), transparent); background-size: 200% 100%;" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 py-3 border-t border-white/10">
+      <div class="h-9 rounded-lg bg-white/5 border border-white/10 flex items-center px-3 text-sm text-muted">
+        Describe what you want to build...
+      </div>
+    </div>
+  </div>
+</MockupFrame>

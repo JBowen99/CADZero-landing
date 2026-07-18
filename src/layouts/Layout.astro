@@ -1,23 +1,41 @@
+---
+import '../styles/global.css';
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>CADZero — AI-Native Parametric CAD</title>
+    <meta name="description" content="The CAD tool that speaks your language. Describe what you need in plain English and CADZero generates real 3D geometry — instantly." />
+    <meta name="keywords" content="CAD, AI, parametric modeling, OpenSCAD, Build123D, 3D modeling, open source" />
+
+    <meta property="og:title" content="CADZero — AI-Native Parametric CAD" />
+    <meta property="og:description" content="Describe it. Watch it build. The CAD tool that speaks your language." />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://cadzero.dev" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CADZero — AI-Native Parametric CAD" />
+    <meta name="twitter:description" content="Describe it. Watch it build. The CAD tool that speaks your language." />
+  </head>
+  <body class="min-h-screen">
+    <div class="fixed inset-0 -z-10 dot-grid pointer-events-none" />
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  .dot-grid {
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
 </style>

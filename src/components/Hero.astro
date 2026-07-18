@@ -1,0 +1,81 @@
+---
+import { SITE } from '../data/site';
+import Kicker from './ui/Kicker.astro';
+import Button from './ui/Button.astro';
+import Reveal from './ui/Reveal.astro';
+import ChatMockup from './ui/ChatMockup.astro';
+import Download from '@lucide/astro/icons/download';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section class={`relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reveal class="flex justify-center mb-6">
+      <Kicker>AI-NATIVE PARAMETRIC CAD</Kicker>
+    </Reveal>
+
+    <Reveal :delay={100}>
+      <h1 class="text-[clamp(2.5rem,7vw,4.5rem)] font-bold tracking-[-0.04em] leading-[1.05] text-center max-w-4xl mx-auto">
+        <span class="bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent">
+          Build with
+        </span>
+        <span> </span>
+        <span class="text-brand block sm:inline [text-shadow:0_0_40px_rgba(250,204,21,0.4)]">
+          words
+        </span>
+      </h1>
+    </Reveal>
+
+    <Reveal :delay={200}>
+      <p class="mt-6 text-lg md:text-xl text-muted text-center max-w-2xl mx-auto leading-relaxed">
+        {SITE.subheadline}
+      </p>
+    </Reveal>
+
+    <Reveal :delay={300}>
+      <p class="mt-4 text-sm md:text-base text-muted/70 text-center max-w-xl mx-auto leading-relaxed font-mono">
+        <span class="text-brand/80">&gt;</span> Type &ldquo;a bracket with four 5mm mounting holes&rdquo;
+        <br class="sm:hidden" />
+        and CADZero generates real 3D geometry — instantly.
+      </p>
+    </Reveal>
+
+    <Reveal :delay={400}>
+      <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+        <Button href={SITE.download} size="lg" class="w-full sm:w-auto justify-center">
+          <Download class="w-4 h-4" />
+          Download for Linux &darr;
+        </Button>
+        <Button href={SITE.github} variant="secondary" size="lg" class="w-full sm:w-auto justify-center">
+          View on GitHub
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 7h10v10" /><path d="M7 17 21 3" />
+          </svg>
+        </Button>
+      </div>
+    </Reveal>
+
+    <Reveal :delay={500}>
+      <div class="mt-16 md:mt-20 max-w-4xl mx-auto">
+        <div class="hero-mockup relative">
+          <div class="absolute -inset-8 -z-10 bg-brand/15 blur-[100px] rounded-full animate-glow-pulse" />
+          <ChatMockup />
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .hero-mockup {
+    perspective: 1200px;
+    transform: rotateX(2deg) rotateY(-1deg);
+  }
+
+  @media (max-width: 767px) {
+    .hero-mockup {
+      transform: none;
+    }
+  }
+</style>

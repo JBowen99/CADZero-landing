@@ -1,0 +1,77 @@
+---
+import { SITE, NAV_LINKS } from '../data/site';
+import Menu from '@lucide/astro/icons/menu';
+import X from '@lucide/astro/icons/x';
+---
+
+<header data-navbar class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+    <a href="/" class="text-xl font-bold tracking-tight no-underline">
+      <span class="text-foreground">CAD</span><span class="text-brand [text-shadow:0_0_20px_rgba(250,204,21,0.4)]">Zero</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-8">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class="text-sm text-muted hover:text-foreground transition-colors no-underline">
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={SITE.github}
+        class="text-muted hover:text-foreground transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+      </a>
+    </nav>
+    <button data-menu-toggle class="md:hidden text-foreground p-2 relative" aria-label="Toggle menu">
+      <Menu class="w-6 h-6" data-menu-icon="closed" />
+      <X class="w-6 h-6 hidden" data-menu-icon="open" />
+    </button>
+  </div>
+  <div data-menu class="md:hidden hidden">
+    <div class="px-4 py-4 space-y-4 bg-black/80 backdrop-blur-md border-b border-white/10">
+      {NAV_LINKS.map((link) => (
+        <a href={link.href} class="block py-3 text-sm text-muted hover:text-foreground transition-colors no-underline">
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={SITE.github}
+        class="flex items-center gap-2 py-3 text-sm text-muted hover:text-foreground transition-colors no-underline"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</header>
+<div data-nav-sentinel class="absolute top-0 left-0 w-full h-px pointer-events-none" />
+
+<style>
+  [data-navbar].is-scrolled {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  [data-menu-toggle].open [data-menu-icon="closed"] {
+    display: none;
+  }
+
+  [data-menu-toggle].open [data-menu-icon="open"] {
+    display: block;
+  }
+</style>
+
+<script>
+  import '../scripts/navbar';
+</script>

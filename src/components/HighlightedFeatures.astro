@@ -1,0 +1,85 @@
+---
+import { HIGHLIGHTED_FEATURES } from '../data/highlighted-features';
+import Reval from './ui/Reveal.astro';
+import MockupFrame from './ui/MockupFrame.astro';
+import ChatMockup from './ui/ChatMockup.astro';
+import ViewportMockup from './ui/ViewportMockup.astro';
+import Check from '@lucide/astro/icons/check';
+import FileBox from '@lucide/astro/icons/file-box';
+import Download from '@lucide/astro/icons/download';
+import Archive from '@lucide/astro/icons/archive';
+import History from '@lucide/astro/icons/history';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section id="highlights" class={`relative py-24 scroll-mt-20 ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reval class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Everything in one workspace</h2>
+      <p class="mt-4 text-muted max-w-lg mx-auto">
+        Three core pillars that make CADZero the most natural way to design in 3D.
+      </p>
+    </Reval>
+
+    <div class="space-y-20 md:space-y-28">
+      {HIGHLIGHTED_FEATURES.map((feature, i) => (
+        <Reval :delay={i * 150}>
+          <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            <!-- Visual side -->
+            <div
+              class={`w-full lg:w-1/2 ${feature.imageOnLeft ? '' : 'lg:order-last'}`}
+            >
+              {feature.visual === 'chat' && <ChatMockup />}
+              {feature.visual === 'viewport' && <ViewportMockup />}
+              {feature.visual === 'export' && (
+                <MockupFrame glow class="w-full">
+                  <div class="p-4 space-y-2">
+                    <div class="flex items-center gap-2 text-xs font-mono text-muted border-b border-white/10 pb-2 mb-3">
+                      <Archive class="w-3.5 h-3.5" />
+                      bracket-v4.cadz
+                    </div>
+                    {[
+                      { icon: FileBox, name: 'bracket-v4.step', size: '142 KB' },
+                      { icon: Download, name: 'bracket-v4.stl', size: '891 KB' },
+                      { icon: FileBox, name: 'bracket-v4.obj', size: '623 KB' },
+                      { icon: History, name: 'bracket-v3.cadz', size: '38 KB' },
+                    ].map((file) => (
+                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                        <file.icon class="w-4 h-4 text-brand/70 shrink-0" />
+                        <span class="flex-1 text-sm font-mono text-foreground/80">
+                          {file.name}
+                        </span>
+                        <span class="text-xs text-muted">{file.size}</span>
+                      </div>
+                    ))}
+                  </div>
+                </MockupFrame>
+              )}
+            </div>
+
+            <!-- Text side -->
+            <div class="w-full lg:w-1/2 space-y-4">
+              <h3 class="text-2xl md:text-3xl font-semibold tracking-tight">
+                {feature.title}
+              </h3>
+              <p class="text-muted leading-relaxed">
+                {feature.description}
+              </p>
+              <ul class="space-y-2 pt-2">
+                {feature.points.map((point) => (
+                  <li class="flex items-start gap-3 text-sm text-foreground/80">
+                    <span class="mt-0.5 w-5 h-5 rounded-full bg-brand/15 flex items-center justify-center shrink-0">
+                      <Check class="w-3 h-3 text-brand" />
+                    </span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reval>
+      ))}
+    </div>
+  </div>
+</section>

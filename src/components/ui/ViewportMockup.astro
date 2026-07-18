@@ -1,0 +1,36 @@
+---
+import MockupFrame from './MockupFrame.astro';
+---
+
+<MockupFrame class="w-full aspect-[4/3]">
+  <div class="flex flex-col h-full">
+    <div class="flex items-center justify-between px-4 py-2 border-b border-white/10">
+      <span class="text-xs font-mono text-muted">3D Viewport</span>
+      <div class="flex gap-2 text-muted text-xs">
+        <span class="text-foreground">☰</span>
+        <span>⊙</span>
+        <span>◻</span>
+      </div>
+    </div>
+    <div class="flex-1 relative bg-gradient-to-b from-background to-surface overflow-hidden">
+      <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px); background-size: 40px 40px;" />
+      <div class="absolute inset-0 flex items-center justify-center">
+        <div class="relative w-32 h-32 animate-float" style="transform-style: preserve-3d;">
+          <div class="absolute inset-0 bg-brand/10 rounded-lg border border-brand/30" style="transform: translateZ(0)" />
+          <div class="absolute inset-0 bg-brand/10 rounded-lg border border-brand/30" style="transform: rotateY(60deg) translateZ(32px)" />
+          <div class="absolute inset-0 bg-brand/10 rounded-lg border border-brand/30" style="transform: rotateX(60deg) translateZ(32px)" />
+        </div>
+      </div>
+      <div class="absolute bottom-3 left-3 flex gap-0.5 text-[10px] font-mono">
+        <span class="text-red-400">X</span>
+        <span class="text-green-400">Y</span>
+        <span class="text-blue-400">Z</span>
+      </div>
+      <div class="absolute top-3 right-3 w-12 h-12 rounded border border-white/10 bg-black/50 flex items-center justify-center text-[8px] font-mono text-muted">
+        <span class="block leading-tight text-center">
+          V<br/>I<br/>E<br/>W
+        </span>
+      </div>
+    </div>
+  </div>
+</MockupFrame>

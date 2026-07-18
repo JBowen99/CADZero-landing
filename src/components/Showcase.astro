@@ -1,0 +1,33 @@
+---
+import { PROMPT_EXAMPLES } from '../data/site';
+import Reval from './ui/Reveal.astro';
+import ChatMockup from './ui/ChatMockup.astro';
+
+const { class: className = '' } = Astro.props;
+---
+
+<section class={`relative py-24 overflow-hidden ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Reval class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">See it in action</h2>
+      <p class="mt-4 text-muted max-w-lg mx-auto">
+        Real prompts that real users have typed — from bearing to bracket, gear to fillet.
+      </p>
+    </Reval>
+
+    <Reval :delay={100}>
+      <div class="flex flex-wrap justify-center gap-3 mb-16">
+        {PROMPT_EXAMPLES.map((prompt) => (
+          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-muted font-mono">
+            <span class="text-brand">&gt;</span>
+            {prompt}
+          </span>
+        ))}
+      </div>
+    </Reval>
+
+    <Reval :delay={200} class="max-w-3xl mx-auto">
+      <ChatMockup />
+    </Reval>
+  </div>
+</section>
