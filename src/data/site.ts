@@ -10,7 +10,7 @@ export const SITE = {
 };
 
 export const NAV_LINKS = [
-  { label: 'Features', href: '#features' },
+  { label: 'Features', href: '#highlights' },
   { label: 'How it Works', href: '#how-it-works' },
   { label: 'Download', href: '#download' },
 ];
