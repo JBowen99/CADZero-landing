@@ -66,7 +66,7 @@ Derived from the app's own design tokens (OKLCH-based, Tailwind v4 + shadcn/ui "
          Type "a bracket with four 5mm mounting holes"
          and CADZero generates real 3D geometry — instantly.
 
-              [ Download for Linux ↓ ]    [ View on GitHub ↗ ]
+              [ Download Now ↓ ]    [ View on GitHub ↗ ]
 
          [ Floating animated viewport mockup / product screenshot ]
 ```
@@ -171,7 +171,7 @@ Small, muted, monospace. Just to signal credibility.
 
               Stop clicking through menus. Start talking to your CAD.
 
-                    [ Download for Linux ↓ ]    [ Star on GitHub ★ ]
+                    [ Download Now ↓ ]    [ Star on GitHub ★ ]
 ```
 - Full-width dark section with a large yellow radial glow.
 - Centered text, big buttons.
