@@ -1,13 +1,15 @@
 ---
 import { SITE, NAV_LINKS } from '../data/site';
+import logo from '../assets/logo.svg';
 import Menu from '@lucide/astro/icons/menu';
 import X from '@lucide/astro/icons/x';
 ---
 
-<header data-navbar class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+<header data-navbar class="fixed top-0 left-0 right-0 z-50 border-b border-transparent transition-colors duration-300">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-    <a href="/" class="text-xl font-bold tracking-tight no-underline">
-      <span class="text-foreground">CAD</span><span class="text-brand [text-shadow:0_0_20px_rgba(250,204,21,0.4)]">Zero</span>
+    <a href="/" class="flex items-center gap-2 text-xl font-bold tracking-tight no-underline">
+      <img src={logo.src} alt="" width="32" height="32" class="shrink-0" />
+      <span><span class="text-foreground">CAD</span><span class="text-brand [text-shadow:0_0_20px_rgba(250,204,21,0.4)]">Zero</span></span>
     </a>
     <nav class="hidden md:flex items-center gap-8">
       {NAV_LINKS.map((link) => (
@@ -60,7 +62,7 @@ import X from '@lucide/astro/icons/x';
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
   [data-menu-toggle].open [data-menu-icon="closed"] {

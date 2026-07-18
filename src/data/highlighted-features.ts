@@ -22,11 +22,11 @@ export const HIGHLIGHTED_FEATURES: HighlightedFeature[] = [
   {
     title: 'See your model come to life',
     description:
-      'Every command updates the 3D viewport instantly. Rotate, pan, and inspect your design from any angle while the AI works alongside you.',
+      'A full 3D viewport with the tools you expect — orbit, pan, zoom, view cube, grid, and RGB axes. Select faces, edges, or vertices directly on the mesh and pass that context to the chat for precise, location-aware edits like "put a hole right here".',
     points: [
-      'Real-time 3D preview',
-      'Orbit, pan & zoom controls',
+      'Orbit, pan, zoom, view cube & axes',
       'Mesh, solid & wireframe views',
+      'Pick faces, edges & vertices as chat context',
     ],
     visual: 'viewport',
     imageOnLeft: false,

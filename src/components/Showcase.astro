@@ -1,9 +1,30 @@
 ---
-import { PROMPT_EXAMPLES } from '../data/site';
+import { Image } from 'astro:assets';
 import Reval from './ui/Reveal.astro';
-import ChatMockup from './ui/ChatMockup.astro';
+import MockupFrame from './ui/MockupFrame.astro';
+import wireframeGearExample from '../assets/wireframe-gear-example.webp';
+import codeExample from '../assets/code-example.webp';
+import historyTab from '../assets/history-tab.webp';
 
 const { class: className = '' } = Astro.props;
+
+const gallery: { src: ImageMetadata; alt: string; caption: string }[] = [
+  {
+    src: wireframeGearExample,
+    alt: '3D viewport showing a gear in wireframe view with orbit controls',
+    caption: 'Wireframe & shaded views',
+  },
+  {
+    src: codeExample,
+    alt: 'CodeMirror editor showing generated parametric OpenSCAD and Build123D code',
+    caption: 'Editable parametric code',
+  },
+  {
+    src: historyTab,
+    alt: 'Revision history panel with versioned checkpoints in a DAG graph',
+    caption: 'Revision history',
+  },
+];
 ---
 
 <section class={`relative py-24 overflow-hidden ${className}`}>
@@ -11,23 +32,31 @@ const { class: className = '' } = Astro.props;
     <Reval class="text-center mb-12">
       <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">See it in action</h2>
       <p class="mt-4 text-muted max-w-lg mx-auto">
-        Real prompts that real users have typed — from bearing to bracket, gear to fillet.
+        Here are some screenshots of the app in action.
       </p>
     </Reval>
 
-    <Reval :delay={100}>
-      <div class="flex flex-wrap justify-center gap-3 mb-16">
-        {PROMPT_EXAMPLES.map((prompt) => (
-          <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 text-sm text-muted font-mono">
-            <span class="text-brand">&gt;</span>
-            {prompt}
-          </span>
+    <Reval :delay={200}>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+        {gallery.map((shot, i) => (
+          <MockupFrame
+            glow={i === 0}
+            class="group relative overflow-hidden aspect-[4/3]"
+          >
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              sizes="(min-width: 1024px) 320px, 100vw"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              class="block w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+            />
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span class="text-xs font-mono text-brand/90">&gt;</span>
+              <span class="ml-1 text-xs text-foreground/80">{shot.caption}</span>
+            </div>
+          </MockupFrame>
         ))}
       </div>
-    </Reval>
-
-    <Reval :delay={200} class="max-w-3xl mx-auto">
-      <ChatMockup />
     </Reval>
   </div>
 </section>

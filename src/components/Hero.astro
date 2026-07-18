@@ -1,20 +1,17 @@
 ---
+import { Image } from 'astro:assets';
 import { SITE } from '../data/site';
-import Kicker from './ui/Kicker.astro';
 import Button from './ui/Button.astro';
 import Reveal from './ui/Reveal.astro';
-import ChatMockup from './ui/ChatMockup.astro';
+import MockupFrame from './ui/MockupFrame.astro';
 import Download from '@lucide/astro/icons/download';
+import simpleGearExample from '../assets/simple-gear-example.webp';
 
 const { class: className = '' } = Astro.props;
 ---
 
 <section class={`relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden ${className}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <Reveal class="flex justify-center mb-6">
-      <Kicker>AI-NATIVE PARAMETRIC CAD</Kicker>
-    </Reveal>
-
     <Reveal :delay={100}>
       <h1 class="text-[clamp(2.5rem,7vw,4.5rem)] font-bold tracking-[-0.04em] leading-[1.05] text-center max-w-4xl mx-auto">
         <span class="bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent">
@@ -34,33 +31,33 @@ const { class: className = '' } = Astro.props;
     </Reveal>
 
     <Reveal :delay={300}>
-      <p class="mt-4 text-sm md:text-base text-muted/70 text-center max-w-xl mx-auto leading-relaxed font-mono">
-        <span class="text-brand/80">&gt;</span> Type &ldquo;a bracket with four 5mm mounting holes&rdquo;
-        <br class="sm:hidden" />
-        and CADZero generates real 3D geometry — instantly.
-      </p>
-    </Reveal>
-
-    <Reveal :delay={400}>
       <div class="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
         <Button href={SITE.download} size="lg" class="w-full sm:w-auto justify-center">
           <Download class="w-4 h-4" />
-          Download for Linux &darr;
+          Download for Linux
         </Button>
         <Button href={SITE.github} variant="secondary" size="lg" class="w-full sm:w-auto justify-center">
-          View on GitHub
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7 7h10v10" /><path d="M7 17 21 3" />
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
           </svg>
+          View on GitHub
         </Button>
       </div>
     </Reveal>
 
-    <Reveal :delay={500}>
-      <div class="mt-16 md:mt-20 max-w-4xl mx-auto">
+    <Reveal :delay={400}>
+      <div class="mt-16 md:mt-20 max-w-5xl mx-auto">
         <div class="hero-mockup relative">
           <div class="absolute -inset-8 -z-10 bg-brand/15 blur-[100px] rounded-full animate-glow-pulse" />
-          <ChatMockup />
+          <MockupFrame glow class="w-full">
+            <Image
+              src={simpleGearExample}
+              alt="CADZero generating a parametric gear from a natural-language prompt"
+              sizes="(min-width: 1024px) 1024px, 100vw"
+              loading="eager"
+              class="block w-full h-auto"
+            />
+          </MockupFrame>
         </div>
       </div>
     </Reveal>

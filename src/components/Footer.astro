@@ -6,7 +6,7 @@ const { class: className = '' } = Astro.props;
 
 <footer class={`relative border-t border-white/10 py-12 ${className}`}>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-2 gap-8">
       <div>
         <a href="/" class="text-lg font-bold tracking-tight no-underline">
           <span class="text-foreground">CAD</span><span class="text-brand [text-shadow:0_0_20px_rgba(250,204,21,0.4)]">Zero</span>
@@ -16,15 +16,11 @@ const { class: className = '' } = Astro.props;
         </p>
       </div>
 
-      <div class="text-sm text-muted">
-        <span> </span>
-        <p class="leading-relaxed">
+      <div class="flex flex-col items-start md:items-end gap-3">
+        <p class="text-sm text-muted leading-relaxed md:text-right">
           Built with React, Three.js,<br />
           and a love for making things.
         </p>
-      </div>
-
-      <div class="flex flex-col items-start md:items-end gap-3">
         <a
           href={SITE.github}
           class="flex items-center gap-2 text-sm text-muted hover:text-foreground transition-colors no-underline"
@@ -39,12 +35,8 @@ const { class: className = '' } = Astro.props;
       </div>
     </div>
 
-    <div class="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted/40">
+    <div class="mt-10 pt-6 border-t border-white/5 flex justify-center text-xs text-muted/40">
       <p>&copy; 2026 CADZero</p>
-      <div class="flex gap-6">
-        <a href={SITE.github + '/issues'} class="hover:text-foreground transition-colors no-underline">Issues</a>
-        <a href={SITE.github} class="hover:text-foreground transition-colors no-underline">License (MIT)</a>
-      </div>
     </div>
   </div>
 </footer>

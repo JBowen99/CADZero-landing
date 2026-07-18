@@ -1,16 +1,29 @@
 ---
+import { Image } from 'astro:assets';
 import { HIGHLIGHTED_FEATURES } from '../data/highlighted-features';
 import Reval from './ui/Reveal.astro';
 import MockupFrame from './ui/MockupFrame.astro';
-import ChatMockup from './ui/ChatMockup.astro';
-import ViewportMockup from './ui/ViewportMockup.astro';
 import Check from '@lucide/astro/icons/check';
-import FileBox from '@lucide/astro/icons/file-box';
-import Download from '@lucide/astro/icons/download';
-import Archive from '@lucide/astro/icons/archive';
-import History from '@lucide/astro/icons/history';
+import planetaryDriveExample from '../assets/planetary-drive-example.webp';
+import selectionExample from '../assets/selection-example.webp';
+import mountingPlateHistoryExample from '../assets/mounting-plate-history-example.webp';
 
 const { class: className = '' } = Astro.props;
+
+const visuals: Record<string, { src: ImageMetadata; alt: string }> = {
+  chat: {
+    src: planetaryDriveExample,
+    alt: 'A planetary gear drive generated from a natural-language prompt',
+  },
+  viewport: {
+    src: selectionExample,
+    alt: 'Topology selection — faces, edges, and vertices picked directly in the 3D viewport',
+  },
+  export: {
+    src: mountingPlateHistoryExample,
+    alt: 'Mounting plate model with revision history panel showing versioned checkpoints',
+  },
+};
 ---
 
 <section id="highlights" class={`relative py-24 scroll-mt-20 ${className}`}>
@@ -30,32 +43,14 @@ const { class: className = '' } = Astro.props;
             <div
               class={`w-full lg:w-1/2 ${feature.imageOnLeft ? '' : 'lg:order-last'}`}
             >
-              {feature.visual === 'chat' && <ChatMockup />}
-              {feature.visual === 'viewport' && <ViewportMockup />}
-              {feature.visual === 'export' && (
-                <MockupFrame glow class="w-full">
-                  <div class="p-4 space-y-2">
-                    <div class="flex items-center gap-2 text-xs font-mono text-muted border-b border-white/10 pb-2 mb-3">
-                      <Archive class="w-3.5 h-3.5" />
-                      bracket-v4.cadz
-                    </div>
-                    {[
-                      { icon: FileBox, name: 'bracket-v4.step', size: '142 KB' },
-                      { icon: Download, name: 'bracket-v4.stl', size: '891 KB' },
-                      { icon: FileBox, name: 'bracket-v4.obj', size: '623 KB' },
-                      { icon: History, name: 'bracket-v3.cadz', size: '38 KB' },
-                    ].map((file) => (
-                      <div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
-                        <file.icon class="w-4 h-4 text-brand/70 shrink-0" />
-                        <span class="flex-1 text-sm font-mono text-foreground/80">
-                          {file.name}
-                        </span>
-                        <span class="text-xs text-muted">{file.size}</span>
-                      </div>
-                    ))}
-                  </div>
-                </MockupFrame>
-              )}
+              <MockupFrame glow class="w-full">
+                <Image
+                  src={visuals[feature.visual].src}
+                  alt={visuals[feature.visual].alt}
+                  sizes="(min-width: 1024px) 512px, 100vw"
+                  class="block w-full h-auto"
+                />
+              </MockupFrame>
             </div>
 
             <!-- Text side -->
